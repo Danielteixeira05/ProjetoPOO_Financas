@@ -1,0 +1,46 @@
+@startuml
+title Diagrama de Classes
+hide circle
+
+class Utilizador {
+  - identificacao : int
+  - nome : String
+  - email : String
+  - password : String
+  - perfil : String
+  + registar()
+  + login()
+}
+
+abstract class Transacao {
+  - identificacao : int
+  - descricao : String
+  - valor : double
+  - data : Date
+  - tipo : String
+  + validarValor() : boolean
+}
+
+class Receita {
+}
+
+class Despesa {
+}
+
+class Categoria {
+  - nome : String
+  - id : int
+  + validar()
+  + Categoria()
+}
+
+class Persistencia {
+  + guardarDados()
+  + carregarDados()
+}
+
+Transacao <|-- Receita
+Transacao <|-- Despesa
+Transacao "1" --> "1" Categoria : tem
+Utilizador "1" --> "*" Transacao : gere
+@enduml

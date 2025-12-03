@@ -1,0 +1,35 @@
+@startuml
+left to right direction
+actor "Utilizador Normal" as U
+actor "Administrador" as A
+
+rectangle "Sistema Financeiro" {
+  usecase UC1 as "Registar Utilizador"
+  usecase UC2 as "Login"
+  usecase UC3 as "Ver Perfil"
+  usecase UC4 as "Registar Receita"
+  usecase UC5 as "Registar Despesa"
+  usecase UC6 as "Criar Categoria"
+  usecase UC7 as "Alterar Transacao"
+  usecase UC8 as "Eliminar Transacao"
+  usecase UC9 as "Calcular Saldo"
+  usecase UC10 as "Gerar Relatorio"
+  usecase UC11 as "Listar por Categoria"
+  usecase UC12 as "Gerir Contas"
+}
+
+U --> UC1
+U --> UC2
+U --> UC3
+U --> UC4
+U --> UC5
+U --> UC6
+U --> UC7
+U --> UC8
+U --> UC9
+U --> UC10
+U --> UC11
+
+A --|> U
+A --> UC12
+@enduml

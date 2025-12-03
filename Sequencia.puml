@@ -1,0 +1,33 @@
+@startuml
+title Diagrama de Sequência - Gestão de Receita
+actor "Utilizador" as User
+participant "ui: UIReceita" as UIReceita
+participant "r:Receita" as Receita
+participant "c:Categoria" as Categoria
+participant "p:Persistência" as Persistencia
+
+== Abrir Interface Receita ==
+User -> UIReceita: UIReceita()
+UIReceita -> Receita: Receita()
+Receita -> Categoria: Categoria()
+UIReceita -> Persistencia: Persistencia()
+
+== Preencher Receita ==
+User -> UIReceita: Set_Descricao(Descricao)
+UIReceita -> Receita: set_Descricao(Descricao)
+
+User -> UIReceita: Set_Valor(Valor)
+UIReceita -> Receita: set_Valor(Valor)
+
+User -> UIReceita: Set_Data(Data)
+UIReceita -> Receita: set_Data(Data)
+
+User -> UIReceita: Set_Categoria(NomeCategoria)
+UIReceita -> Receita: set_Categoria(NomeCategoria)
+Receita -> Categoria: Set_Nome(NomeCategoria)
+Categoria -> Categoria: validar()
+
+== Guardar ==
+User -> UIReceita: Guardar()
+UIReceita -> Persistencia: GuardarReceita(r)
+@enduml

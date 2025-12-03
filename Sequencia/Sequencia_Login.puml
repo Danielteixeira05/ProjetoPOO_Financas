@@ -1,0 +1,26 @@
+@startuml
+title Diagrama de Sequência - Login
+actor "Utilizador" as User
+participant "ui: UILogin" as UI
+participant "g: GestorUtilizadores" as Gestor
+
+== Iniciar Login ==
+User -> UI: UI_Login()
+
+== Inserir Dados ==
+User -> UI: inserirEmail(email)
+User -> UI: inserirPassword(password)
+
+== Autenticacao ==
+User -> UI: confirmarLogin()
+UI -> Gestor: autenticar(email, password)
+Gestor -> Gestor: validarCredenciais()
+
+alt Credenciais Validas
+  Gestor --> UI: Sucesso
+  UI --> User: Mostra Menu Principal
+else Credenciais Invalidas
+  Gestor --> UI: Erro
+  UI --> User: Mostra Mensagem Erro
+end
+@enduml
