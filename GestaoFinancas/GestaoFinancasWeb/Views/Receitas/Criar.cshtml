@@ -1,0 +1,16 @@
+@model GestaoFinancasWeb.Models.Receita
+
+<h2>Nova Receita</h2>
+
+<form action="/Receitas/Criar" method="post">
+    <label>Descrição:</label>
+    <input type="text" name="Descricao" class="form-control" />
+    
+    <label>Valor:</label>
+    <input type="number" name="Valor" step="0.01" class="form-control" />
+    
+    <label>Categoria:</label>
+    <input type="text" name="Categoria" class="form-control" />
+    
+    <button type="submit" class="btn btn-success" style="margin-top:10px">Guardar</button>
+</form>

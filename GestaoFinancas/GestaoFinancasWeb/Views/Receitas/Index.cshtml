@@ -1,0 +1,24 @@
+@model IEnumerable<GestaoFinancasWeb.Models.Receita>
+
+<h2>As Minhas Receitas</h2>
+
+<a href="/Receitas/Criar" class="btn btn-primary">Nova Receita</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Descrição</th>
+            <th>Valor</th>
+            <th>Categoria</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>@item.Descricao</td>
+                <td>@item.Valor €</td>
+                <td>@item.Categoria</td>
+            </tr>
+        }
+    </tbody>
+</table>
