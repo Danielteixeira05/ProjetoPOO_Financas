@@ -1,0 +1,23 @@
+@model GestaoFinancasWeb.Models.Categoria
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-5">
+        <div class="card border-danger shadow">
+            <div class="card-header bg-danger text-white">
+                <h4 class="mb-0">Tem a certeza?</h4>
+            </div>
+            <div class="card-body text-center">
+                <p class="lead">Está prestes a eliminar a categoria:</p>
+                <h2 class="text-danger fw-bold">@Model.Nome</h2>
+                <p class="text-muted small">Esta ação não pode ser desfeita.</p>
+
+                <form asp-action="Eliminar" method="post" class="mt-4">
+                    <input type="hidden" asp-for="Id" />
+                    
+                    <button type="submit" class="btn btn-danger btn-lg me-2">Sim, Eliminar</button>
+                    <a asp-action="Index" class="btn btn-secondary btn-lg">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
