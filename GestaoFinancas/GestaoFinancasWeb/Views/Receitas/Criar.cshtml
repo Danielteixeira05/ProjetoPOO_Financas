@@ -22,10 +22,13 @@
 
     <div class="form-group">
         <label>Categoria:</label>
-        <input asp-for="CategoriaNome" class="form-control" />
+        <select asp-for="CategoriaNome" class="form-control"
+                asp-items="@(new SelectList(ViewBag.ListaCategorias, "Nome", "Nome"))">
+            <option value="">-- Selecione uma Categoria --</option>
+        </select>
     </div>
     
     <br/>
-    <button type="submit" class="btn btn-primary">Guardar Receita</button>
+    <button type="submit" class="btn btn-success">Guardar Receita</button>
     <a href="/Receitas" class="btn btn-secondary">Cancelar</a>
 </form>

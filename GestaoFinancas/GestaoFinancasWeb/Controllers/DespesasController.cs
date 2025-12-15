@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using GestaoFinancasWeb.Models;
-using Microsoft.AspNetCore.Http; // <--- OBRIGATÓRIO PARA A SESSÃO
+using Microsoft.AspNetCore.Http;
 
 namespace GestaoFinancasWeb.Controllers
 {
@@ -11,26 +11,28 @@ namespace GestaoFinancasWeb.Controllers
     {
         private static List<Despesa> listaDespesas = Persistencia.CarregarDespesas();
 
-        // LISTAR (Agora Protegido)
+        // LISTAR (Protegido)
         public IActionResult Index()
         {
             // --- O PORTEIRO ---
-            // Se não houver login, manda para fora
             if (HttpContext.Session.GetString("Utilizador") == null)
             {
                 return RedirectToAction("Login", "Conta");
             }
-            // ------------------
 
             listaDespesas = Persistencia.CarregarDespesas();
             return View(listaDespesas);
         }
 
+        // CRIAR (Formulário)
         public IActionResult Criar()
         {
+            // Carrega categorias para o dropdown
+            ViewBag.ListaCategorias = Persistencia.CarregarCategorias();
             return View();
         }
 
+        // CRIAR (Guardar)
         [HttpPost]
         public IActionResult Criar(Despesa novaDespesa)
         {
@@ -41,9 +43,13 @@ namespace GestaoFinancasWeb.Controllers
                 Persistencia.GuardarDespesas(listaDespesas);
                 return RedirectToAction("Index");
             }
+            
+            // Recarrega categorias se houver erro
+            ViewBag.ListaCategorias = Persistencia.CarregarCategorias();
             return View(novaDespesa);
         }
 
+        // ELIMINAR (Pergunta)
         public IActionResult Eliminar(int id)
         {
             var despesa = listaDespesas.FirstOrDefault(d => d.Identificacao == id);
@@ -51,6 +57,7 @@ namespace GestaoFinancasWeb.Controllers
             return View(despesa);
         }
 
+        // ELIMINAR (Confirmar)
         [HttpPost, ActionName("Eliminar")]
         public IActionResult ConfirmarEliminar(int id)
         {
@@ -63,13 +70,18 @@ namespace GestaoFinancasWeb.Controllers
             return RedirectToAction("Index");
         }
 
+        // EDITAR (Formulário)
         public IActionResult Editar(int id)
         {
             var despesa = listaDespesas.FirstOrDefault(d => d.Identificacao == id);
             if (despesa == null) return NotFound();
+
+            // Carrega categorias para o dropdown
+            ViewBag.ListaCategorias = Persistencia.CarregarCategorias();
             return View(despesa);
         }
 
+        // EDITAR (Guardar)
         [HttpPost]
         public IActionResult Editar(Despesa despesaAtualizada)
         {
@@ -80,9 +92,13 @@ namespace GestaoFinancasWeb.Controllers
                 despesaAntiga.Valor = despesaAtualizada.Valor;
                 despesaAntiga.CategoriaNome = despesaAtualizada.CategoriaNome;
                 despesaAntiga.Data = despesaAtualizada.Data;
+                
                 Persistencia.GuardarDespesas(listaDespesas);
                 return RedirectToAction("Index");
             }
+
+            // Recarrega categorias se houver erro
+            ViewBag.ListaCategorias = Persistencia.CarregarCategorias();
             return View(despesaAtualizada);
         }
     }

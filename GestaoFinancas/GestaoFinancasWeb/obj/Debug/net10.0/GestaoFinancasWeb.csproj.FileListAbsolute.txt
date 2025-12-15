@@ -99,3 +99,4 @@ C:\Users\admin\Documents\Works\Faculdade\2ºano\poo\DG\E1\ProjetoPOO\GestaoFinan
 C:\Users\admin\Documents\Works\Faculdade\2ºano\poo\DG\E1\ProjetoPOO\GestaoFinancas\GestaoFinancasWeb\bin\Debug\net10.0\despesas.json
 C:\Users\admin\Documents\Works\Faculdade\2ºano\poo\DG\E1\ProjetoPOO\GestaoFinancas\GestaoFinancasWeb\bin\Debug\net10.0\receitas.json
 C:\Users\admin\Documents\Works\Faculdade\2ºano\poo\DG\E1\ProjetoPOO\GestaoFinancas\GestaoFinancasWeb\bin\Debug\net10.0\utilizadores.json
+C:\Users\admin\Documents\Works\Faculdade\2ºano\poo\DG\E1\ProjetoPOO\GestaoFinancas\GestaoFinancasWeb\bin\Debug\net10.0\categorias.json

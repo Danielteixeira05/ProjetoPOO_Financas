@@ -3,25 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using GestaoFinancasWeb.Models;
-using Microsoft.AspNetCore.Http; // <--- NECESSÁRIO PARA LER A SESSÃO
+using Microsoft.AspNetCore.Http; 
 
 namespace GestaoFinancasWeb.Controllers
 {
     public class ReceitasController : Controller
     {
-        // Carrega a lista do ficheiro assim que arranca
         private static List<Receita> listaReceitas = Persistencia.CarregarReceitas();
 
-        // LISTAR (Agora com Segurança!)
+        // LISTAR
         public IActionResult Index()
         {
-            // --- O PORTEIRO ---
-            // Se a sessão estiver vazia (ninguém fez login), manda para o Login
+            // Segurança: Se não houver login, manda para fora
             if (HttpContext.Session.GetString("Utilizador") == null)
             {
                 return RedirectToAction("Login", "Conta");
             }
-            // ------------------
 
             listaReceitas = Persistencia.CarregarReceitas();
             return View(listaReceitas);
@@ -30,6 +27,9 @@ namespace GestaoFinancasWeb.Controllers
         // CRIAR (Formulário)
         public IActionResult Criar()
         {
+            // --- MUDANÇA AQUI ---
+            // Envia a lista de categorias para o Dropdown funcionar
+            ViewBag.ListaCategorias = Persistencia.CarregarCategorias(); 
             return View();
         }
 
@@ -41,9 +41,13 @@ namespace GestaoFinancasWeb.Controllers
             {
                 novaReceita.Identificacao = listaReceitas.Count > 0 ? listaReceitas.Max(r => r.Identificacao) + 1 : 1;
                 listaReceitas.Add(novaReceita);
-                Persistencia.GuardarReceitas(listaReceitas); // Grava no ficheiro
+                Persistencia.GuardarReceitas(listaReceitas); 
                 return RedirectToAction("Index");
             }
+            
+            // --- MUDANÇA AQUI ---
+            // Se der erro, recarrega a lista para o Dropdown não desaparecer
+            ViewBag.ListaCategorias = Persistencia.CarregarCategorias();
             return View(novaReceita);
         }
 
@@ -63,7 +67,7 @@ namespace GestaoFinancasWeb.Controllers
             if (receita != null)
             {
                 listaReceitas.Remove(receita);
-                Persistencia.GuardarReceitas(listaReceitas); // Grava no ficheiro
+                Persistencia.GuardarReceitas(listaReceitas); 
             }
             return RedirectToAction("Index");
         }
@@ -73,6 +77,11 @@ namespace GestaoFinancasWeb.Controllers
         {
             var receita = listaReceitas.FirstOrDefault(r => r.Identificacao == id);
             if (receita == null) return NotFound();
+
+            // --- MUDANÇA AQUI ---
+            // No editar também precisamos do Dropdown
+            ViewBag.ListaCategorias = Persistencia.CarregarCategorias();
+
             return View(receita);
         }
 
@@ -88,9 +97,13 @@ namespace GestaoFinancasWeb.Controllers
                 receitaAntiga.CategoriaNome = receitaAtualizada.CategoriaNome;
                 receitaAntiga.Data = receitaAtualizada.Data;
                 
-                Persistencia.GuardarReceitas(listaReceitas); // Grava no ficheiro
+                Persistencia.GuardarReceitas(listaReceitas); 
                 return RedirectToAction("Index");
             }
+
+            // --- MUDANÇA AQUI ---
+            // Se der erro, recarrega a lista
+            ViewBag.ListaCategorias = Persistencia.CarregarCategorias();
             return View(receitaAtualizada);
         }
     }

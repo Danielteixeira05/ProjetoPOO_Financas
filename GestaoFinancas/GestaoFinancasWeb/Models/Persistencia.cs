@@ -9,7 +9,8 @@ namespace GestaoFinancasWeb.Models
     {
         private static string CaminhoReceitas = "receitas.json";
         private static string CaminhoDespesas = "despesas.json";
-        private static string CaminhoUtilizadores = "utilizadores.json"; // <--- NOVO
+        private static string CaminhoUtilizadores = "utilizadores.json";
+        private static string CaminhoCategorias = "categorias.json"; // <--- NOVO
 
         // --- RECEITAS ---
         public static void GuardarReceitas(List<Receita> lista)
@@ -39,7 +40,7 @@ namespace GestaoFinancasWeb.Models
             return JsonSerializer.Deserialize<List<Despesa>>(textoJson) ?? new List<Despesa>();
         }
 
-        // --- UTILIZADORES (NOVO) ---
+        // --- UTILIZADORES ---
         public static void GuardarUtilizadores(List<Utilizador> lista)
         {
             string textoJson = JsonSerializer.Serialize(lista);
@@ -51,6 +52,34 @@ namespace GestaoFinancasWeb.Models
             if (!File.Exists(CaminhoUtilizadores)) return new List<Utilizador>();
             string textoJson = File.ReadAllText(CaminhoUtilizadores);
             return JsonSerializer.Deserialize<List<Utilizador>>(textoJson) ?? new List<Utilizador>();
+        }
+
+        // --- CATEGORIAS (NOVO BLOCO ADICIONADO) ---
+        public static void GuardarCategorias(List<Categoria> lista)
+        {
+            string textoJson = JsonSerializer.Serialize(lista);
+            File.WriteAllText(CaminhoCategorias, textoJson);
+        }
+
+        public static List<Categoria> CarregarCategorias()
+        {
+            if (!File.Exists(CaminhoCategorias)) 
+            {
+                // Se o ficheiro não existe, cria categorias padrão para não ficar vazio
+                var padrao = new List<Categoria> 
+                { 
+                    new Categoria { Id = 1, Nome = "Alimentação" },
+                    new Categoria { Id = 2, Nome = "Transporte" },
+                    new Categoria { Id = 3, Nome = "Lazer" },
+                    new Categoria { Id = 4, Nome = "Saúde" },
+                    new Categoria { Id = 5, Nome = "Salário" },
+                    new Categoria { Id = 6, Nome = "Outros" }
+                };
+                GuardarCategorias(padrao);
+                return padrao;
+            }
+            string textoJson = File.ReadAllText(CaminhoCategorias);
+            return JsonSerializer.Deserialize<List<Categoria>>(textoJson) ?? new List<Categoria>();
         }
     }
 }
