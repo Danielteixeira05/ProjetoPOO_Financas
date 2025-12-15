@@ -14,7 +14,7 @@ namespace GestaoFinancasWeb.Controllers
         // LISTAR (Protegido)
         public IActionResult Index()
         {
-            // --- O PORTEIRO ---
+            // entrar
             if (HttpContext.Session.GetString("Utilizador") == null)
             {
                 return RedirectToAction("Login", "Conta");
@@ -24,7 +24,7 @@ namespace GestaoFinancasWeb.Controllers
             return View(listaDespesas);
         }
 
-        // CRIAR (Formulário)
+        // CRIAR 
         public IActionResult Criar()
         {
             // Carrega categorias para o dropdown
@@ -49,7 +49,7 @@ namespace GestaoFinancasWeb.Controllers
             return View(novaDespesa);
         }
 
-        // ELIMINAR (Pergunta)
+        // Eliminar
         public IActionResult Eliminar(int id)
         {
             var despesa = listaDespesas.FirstOrDefault(d => d.Identificacao == id);
@@ -57,7 +57,7 @@ namespace GestaoFinancasWeb.Controllers
             return View(despesa);
         }
 
-        // ELIMINAR (Confirmar)
+        // Confirma no eliminar
         [HttpPost, ActionName("Eliminar")]
         public IActionResult ConfirmarEliminar(int id)
         {
@@ -70,7 +70,7 @@ namespace GestaoFinancasWeb.Controllers
             return RedirectToAction("Index");
         }
 
-        // EDITAR (Formulário)
+        // Editar
         public IActionResult Editar(int id)
         {
             var despesa = listaDespesas.FirstOrDefault(d => d.Identificacao == id);

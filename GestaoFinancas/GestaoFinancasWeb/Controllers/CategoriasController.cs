@@ -39,7 +39,7 @@ public class CategoriasController : Controller
         return View(novaCat);
     }
 
-    // --- NOVO: ELIMINAR (Pergunta) ---
+    // NOVO: ELIMINAR (Pergunta) ---
     public IActionResult Eliminar(int id)
     {
         if (HttpContext.Session.GetString("Utilizador") == null) return RedirectToAction("Login", "Conta");
@@ -52,7 +52,7 @@ public class CategoriasController : Controller
         return View(cat);
     }
 
-    // --- NOVO: ELIMINAR (Confirmação) ---
+    // ELIMINAR (Confirmação) ---
     [HttpPost, ActionName("Eliminar")]
     public IActionResult ConfirmarEliminar(int id)
     {

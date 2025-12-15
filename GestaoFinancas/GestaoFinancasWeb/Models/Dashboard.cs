@@ -1,5 +1,6 @@
 namespace GestaoFinancasWeb.Models;
 
+//gráfico
 public class Dashboard
 {
     public double TotalReceitas { get; set; }

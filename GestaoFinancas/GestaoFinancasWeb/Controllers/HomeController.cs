@@ -1,7 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using GestaoFinancasWeb.Models;
-using System.Linq; // Importante para a soma (.Sum)
+using System.Linq; // Necessário para as contas
+using Microsoft.AspNetCore.Http;
 
 namespace GestaoFinancasWeb.Controllers;
 
@@ -9,28 +10,27 @@ public class HomeController : Controller
 {
     public IActionResult Index()
     {
-        // 1. Carregar as listas
+        // Se não tiver login, mostra zeros ou redireciona 
+        // Aqui deixamos mostrar, mas tudo a zero se não houver dados
+        
         var receitas = Persistencia.CarregarReceitas();
         var despesas = Persistencia.CarregarDespesas();
 
-        // 2. Preparar os dados para o ecrã
-        var dados = new Dashboard();
-        
-        // Fazer as somas
-        dados.TotalReceitas = receitas.Sum(r => r.Valor);
-        dados.TotalDespesas = despesas.Sum(d => d.Valor);
-        
-        // Calcular o saldo (Receita - Despesa)
-        dados.Saldo = dados.TotalReceitas - dados.TotalDespesas;
-        
-        dados.QuantidadeTransacoes = receitas.Count + despesas.Count;
+        // Calcular Totais Gerais
+        double totalRec = receitas.Sum(r => r.Valor);
+        double totalDesp = despesas.Sum(d => d.Valor);
 
-        // 3. Enviar para a View
-        return View(dados);
-    }
+        ViewBag.TotalReceitas = totalRec;
+        ViewBag.TotalDespesas = totalDesp;
+        ViewBag.Saldo = totalRec - totalDesp;
 
-    public IActionResult Privacy()
-    {
+        // RELATÓRIO: Agrupar por Categoria 
+        // Calcula quanto se gastou em cada categoria
+        ViewBag.DespesasPorCategoria = despesas
+            .GroupBy(d => d.CategoriaNome)
+            .Select(g => new { Nome = g.Key, Total = g.Sum(d => d.Valor) })
+            .ToList();
+
         return View();
     }
 

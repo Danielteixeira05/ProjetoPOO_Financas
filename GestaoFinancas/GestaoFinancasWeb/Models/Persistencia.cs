@@ -12,7 +12,7 @@ namespace GestaoFinancasWeb.Models
         private static string CaminhoUtilizadores = "utilizadores.json";
         private static string CaminhoCategorias = "categorias.json"; // <--- NOVO
 
-        // --- RECEITAS ---
+        // RECEITAS
         public static void GuardarReceitas(List<Receita> lista)
         {
             string textoJson = JsonSerializer.Serialize(lista);
@@ -26,7 +26,7 @@ namespace GestaoFinancasWeb.Models
             return JsonSerializer.Deserialize<List<Receita>>(textoJson) ?? new List<Receita>();
         }
 
-        // --- DESPESAS ---
+        // DESPESAS 
         public static void GuardarDespesas(List<Despesa> lista)
         {
             string textoJson = JsonSerializer.Serialize(lista);
@@ -40,7 +40,7 @@ namespace GestaoFinancasWeb.Models
             return JsonSerializer.Deserialize<List<Despesa>>(textoJson) ?? new List<Despesa>();
         }
 
-        // --- UTILIZADORES ---
+        // UTILIZADORES 
         public static void GuardarUtilizadores(List<Utilizador> lista)
         {
             string textoJson = JsonSerializer.Serialize(lista);
@@ -54,7 +54,7 @@ namespace GestaoFinancasWeb.Models
             return JsonSerializer.Deserialize<List<Utilizador>>(textoJson) ?? new List<Utilizador>();
         }
 
-        // --- CATEGORIAS (NOVO BLOCO ADICIONADO) ---
+        // CATEGORIAS 
         public static void GuardarCategorias(List<Categoria> lista)
         {
             string textoJson = JsonSerializer.Serialize(lista);

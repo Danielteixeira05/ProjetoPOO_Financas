@@ -49,17 +49,17 @@ namespace GestaoFinancasWeb.Controllers
         {
             var utilizadores = Persistencia.CarregarUtilizadores();
 
-            // Verifica se já existe o username
+            // Verifica se já há username
             if (utilizadores.Any(u => u.Username == novoUser.Username))
             {
                 ViewBag.Erro = "Esse utilizador já existe!";
                 return View(novoUser);
             }
 
-            // --- REQUISITO: Gerar ID Automático ---
+            // Gera ID Automático ---
             novoUser.Id = utilizadores.Count > 0 ? utilizadores.Max(u => u.Id) + 1 : 1;
             
-            // --- REQUISITO: Definir Perfil Padrão ---
+            // Define Perfil Padrão ---
             novoUser.Perfil = "Normal";
 
             // Grava

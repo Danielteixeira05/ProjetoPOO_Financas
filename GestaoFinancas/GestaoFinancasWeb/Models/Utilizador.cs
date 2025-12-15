@@ -22,7 +22,7 @@ namespace GestaoFinancasWeb.Models
         [EmailAddress(ErrorMessage = "Insira um email válido")]
         public string Email { get; set; }
 
-        // Requisito: Perfil (Ex: "Normal" ou "Administrador")
+        // Requisito: Perfil como: "Normal"
         public string Perfil { get; set; } = "Normal"; 
     }
 }

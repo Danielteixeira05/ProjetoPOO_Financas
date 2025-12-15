@@ -101,7 +101,6 @@ namespace GestaoFinancasWeb.Controllers
                 return RedirectToAction("Index");
             }
 
-            // --- MUDANÇA AQUI ---
             // Se der erro, recarrega a lista
             ViewBag.ListaCategorias = Persistencia.CarregarCategorias();
             return View(receitaAtualizada);
