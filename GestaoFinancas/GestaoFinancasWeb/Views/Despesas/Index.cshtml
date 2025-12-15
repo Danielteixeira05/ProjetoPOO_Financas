@@ -1,0 +1,28 @@
+@model IEnumerable<GestaoFinancasWeb.Models.Despesa>
+
+<h2>As Minhas Despesas</h2>
+
+<a href="/Despesas/Criar" class="btn btn-danger">Nova Despesa</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Descrição</th>
+            <th>Valor</th>
+            <th>Categoria</th>
+            <th>Ações</th> </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>@item.Descricao</td>
+                <td>@item.Valor €</td>
+                <td>@item.CategoriaNome</td>
+                <td>
+                    <a href="/Despesas/Editar/@item.Identificacao" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="/Despesas/Eliminar/@item.Identificacao" class="btn btn-dark btn-sm">Apagar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

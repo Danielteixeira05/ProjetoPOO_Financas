@@ -1,0 +1,10 @@
+@model GestaoFinancasWeb.Models.Receita
+<h2>Tens a certeza que queres apagar esta receita?</h2>
+<div class="alert alert-warning">
+    <h4>@Model.Descricao</h4>
+    <p>Valor: @Model.Valor €</p>
+</div>
+<form action="/Receitas/Eliminar/@Model.Identificacao" method="post">
+    <button type="submit" class="btn btn-danger">Sim, Apagar</button>
+    <a href="/Receitas" class="btn btn-secondary">Cancelar</a>
+</form>

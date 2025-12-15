@@ -1,34 +1,97 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using GestaoFinancasWeb.Models; // Para ele saber o que é uma Receita
+using GestaoFinancasWeb.Models;
+using Microsoft.AspNetCore.Http; // <--- NECESSÁRIO PARA LER A SESSÃO
 
-namespace GestaoFinancasWeb.Controllers;
-
-public class ReceitasController : Controller
+namespace GestaoFinancasWeb.Controllers
 {
-    // Uma lista falsa para guardar as receitas na memória (enquanto o site está ligado)
-    private static List<Receita> listaReceitas = new List<Receita>();
-
-    // Ação para mostrar a lista
-    public IActionResult Index()
+    public class ReceitasController : Controller
     {
-        return View(listaReceitas);
-    }
+        // Carrega a lista do ficheiro assim que arranca
+        private static List<Receita> listaReceitas = Persistencia.CarregarReceitas();
 
-    // Ação para mostrar o formulário de criar
-    public IActionResult Criar()
-    {
-        return View();
-    }
+        // LISTAR (Agora com Segurança!)
+        public IActionResult Index()
+        {
+            // --- O PORTEIRO ---
+            // Se a sessão estiver vazia (ninguém fez login), manda para o Login
+            if (HttpContext.Session.GetString("Utilizador") == null)
+            {
+                return RedirectToAction("Login", "Conta");
+            }
+            // ------------------
 
-    // Ação que recebe os dados quando clicas em "Guardar"
-    [HttpPost]
-    public IActionResult Criar(Receita novaReceita)
-    {
-        // Dá um ID e guarda na lista
-        novaReceita.Id = listaReceitas.Count + 1;
-        listaReceitas.Add(novaReceita);
-        
-        // Volta para a lista principal
-        return RedirectToAction("Index");
+            listaReceitas = Persistencia.CarregarReceitas();
+            return View(listaReceitas);
+        }
+
+        // CRIAR (Formulário)
+        public IActionResult Criar()
+        {
+            return View();
+        }
+
+        // CRIAR (Guardar)
+        [HttpPost]
+        public IActionResult Criar(Receita novaReceita)
+        {
+            if (ModelState.IsValid)
+            {
+                novaReceita.Identificacao = listaReceitas.Count > 0 ? listaReceitas.Max(r => r.Identificacao) + 1 : 1;
+                listaReceitas.Add(novaReceita);
+                Persistencia.GuardarReceitas(listaReceitas); // Grava no ficheiro
+                return RedirectToAction("Index");
+            }
+            return View(novaReceita);
+        }
+
+        // ELIMINAR (Pergunta)
+        public IActionResult Eliminar(int id)
+        {
+            var receita = listaReceitas.FirstOrDefault(r => r.Identificacao == id);
+            if (receita == null) return NotFound();
+            return View(receita);
+        }
+
+        // ELIMINAR (Confirmar)
+        [HttpPost, ActionName("Eliminar")]
+        public IActionResult ConfirmarEliminar(int id)
+        {
+            var receita = listaReceitas.FirstOrDefault(r => r.Identificacao == id);
+            if (receita != null)
+            {
+                listaReceitas.Remove(receita);
+                Persistencia.GuardarReceitas(listaReceitas); // Grava no ficheiro
+            }
+            return RedirectToAction("Index");
+        }
+
+        // EDITAR (Formulário)
+        public IActionResult Editar(int id)
+        {
+            var receita = listaReceitas.FirstOrDefault(r => r.Identificacao == id);
+            if (receita == null) return NotFound();
+            return View(receita);
+        }
+
+        // EDITAR (Guardar)
+        [HttpPost]
+        public IActionResult Editar(Receita receitaAtualizada)
+        {
+            var receitaAntiga = listaReceitas.FirstOrDefault(r => r.Identificacao == receitaAtualizada.Identificacao);
+            if (receitaAntiga != null)
+            {
+                receitaAntiga.Descricao = receitaAtualizada.Descricao;
+                receitaAntiga.Valor = receitaAtualizada.Valor;
+                receitaAntiga.CategoriaNome = receitaAtualizada.CategoriaNome;
+                receitaAntiga.Data = receitaAtualizada.Data;
+                
+                Persistencia.GuardarReceitas(listaReceitas); // Grava no ficheiro
+                return RedirectToAction("Index");
+            }
+            return View(receitaAtualizada);
+        }
     }
 }

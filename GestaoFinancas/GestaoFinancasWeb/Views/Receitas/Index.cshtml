@@ -9,7 +9,9 @@
         <tr>
             <th>Descrição</th>
             <th>Valor</th>
+            <th>Data</th>
             <th>Categoria</th>
+            <th>Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -17,7 +19,11 @@
             <tr>
                 <td>@item.Descricao</td>
                 <td>@item.Valor €</td>
-                <td>@item.Categoria</td>
+                <td>@item.Data.ToShortDateString()</td>
+                <td>@item.CategoriaNome</td> <td>
+                    <a href="/Receitas/Editar/@item.Identificacao" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="/Receitas/Eliminar/@item.Identificacao" class="btn btn-danger btn-sm">Apagar</a>
+                </td>
             </tr>
         }
     </tbody>

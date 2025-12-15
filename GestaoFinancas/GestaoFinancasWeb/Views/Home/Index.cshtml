@@ -1,8 +1,26 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model GestaoFinancasWeb.Models.Dashboard
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h2>Resumo Financeiro</h2>
+<hr />
+
+<div>
+    <h4>Estado Atual das Contas:</h4>
+    <br />
+    
+    <p>
+        <strong>Total Ganho (Receitas):</strong> @Model.TotalReceitas.ToString("C")
+    </p>
+    
+    <p>
+        <strong>Total Gasto (Despesas):</strong> @Model.TotalDespesas.ToString("C")
+    </p>
+    
+    <p style="font-size: 1.2em;">
+        <strong>Saldo Final:</strong> @Model.Saldo.ToString("C")
+    </p>
+
+    <br />
+    <p>
+        <em>Total de movimentos registados: @Model.QuantidadeTransacoes</em>
+    </p>
 </div>

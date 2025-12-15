@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestaoFinancas", "GestaoFinancas.csproj", "{AF638C5D-CB78-B5CE-9069-6888321771AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestaoFinancasWeb", "GestaoFinancasWeb\GestaoFinancasWeb.csproj", "{6122A5B1-357C-33B9-2782-BCA5AF45FF81}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF638C5D-CB78-B5CE-9069-6888321771AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF638C5D-CB78-B5CE-9069-6888321771AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF638C5D-CB78-B5CE-9069-6888321771AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF638C5D-CB78-B5CE-9069-6888321771AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6122A5B1-357C-33B9-2782-BCA5AF45FF81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6122A5B1-357C-33B9-2782-BCA5AF45FF81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6122A5B1-357C-33B9-2782-BCA5AF45FF81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6122A5B1-357C-33B9-2782-BCA5AF45FF81}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C7C0C37D-B443-409A-925B-3A20B2C8D703}
+	EndGlobalSection
+EndGlobal

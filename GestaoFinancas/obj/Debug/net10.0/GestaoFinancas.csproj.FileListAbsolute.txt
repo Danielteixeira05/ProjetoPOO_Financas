@@ -12,3 +12,4 @@ C:\Users\admin\Documents\Works\Faculdade\2ºano\poo\DG\E1\ProjetoPOO\GestaoFinan
 C:\Users\admin\Documents\Works\Faculdade\2ºano\poo\DG\E1\ProjetoPOO\GestaoFinancas\obj\Debug\net10.0\GestaoFinancas.pdb
 C:\Users\admin\Documents\Works\Faculdade\2ºano\poo\DG\E1\ProjetoPOO\GestaoFinancas\obj\Debug\net10.0\GestaoFinancas.genruntimeconfig.cache
 C:\Users\admin\Documents\Works\Faculdade\2ºano\poo\DG\E1\ProjetoPOO\GestaoFinancas\obj\Debug\net10.0\ref\GestaoFinancas.dll
+C:\Users\admin\Documents\Works\Faculdade\2ºano\poo\DG\E1\ProjetoPOO\GestaoFinancas\obj\Debug\net10.0\GestaoFinancas.sourcelink.json

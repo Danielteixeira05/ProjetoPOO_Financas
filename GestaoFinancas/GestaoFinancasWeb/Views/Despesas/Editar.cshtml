@@ -1,0 +1,17 @@
+@model GestaoFinancasWeb.Models.Despesa
+<h2>Editar Despesa</h2>
+<form action="/Despesas/Editar" method="post">
+    <input type="hidden" name="Identificacao" value="@Model.Identificacao" />
+    
+    <label>Descrição:</label>
+    <input type="text" name="Descricao" value="@Model.Descricao" class="form-control" />
+    
+    <label>Valor:</label>
+    <input type="number" name="Valor" value="@Model.Valor" step="0.01" class="form-control" />
+    
+    <label>Categoria:</label>
+    <input type="text" name="CategoriaNome" value="@Model.CategoriaNome" class="form-control" />
+    
+    <button type="submit" class="btn btn-warning" style="margin-top:10px">Atualizar</button>
+    <a href="/Despesas" class="btn btn-secondary" style="margin-top:10px">Cancelar</a>
+</form>

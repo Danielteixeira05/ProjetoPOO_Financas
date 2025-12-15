@@ -1,11 +1,11 @@
-namespace GestaoFinancasWeb.Models;
-
-public class Receita
+namespace GestaoFinancasWeb.Models
 {
-    public int Id { get; set; }
-    public string Descricao { get; set; }
-    public double Valor { get; set; }
-    public string Categoria { get; set; }
-    // Construtor vazio
-    public Receita() { }
+    // : Transacao significa que HERDA tudo (incluindo CategoriaNome)
+    public class Receita : Transacao
+    {
+        public Receita()
+        {
+            // Construtor vazio
+        }
+    }
 }

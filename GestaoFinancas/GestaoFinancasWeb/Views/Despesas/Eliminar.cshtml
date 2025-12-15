@@ -1,0 +1,12 @@
+@model GestaoFinancasWeb.Models.Despesa
+<h2>Tens a certeza que queres apagar?</h2>
+
+<div class="alert alert-danger">
+    <h4>@Model.Descricao</h4>
+    <p>Valor: @Model.Valor €</p>
+</div>
+
+<form action="/Despesas/Eliminar/@Model.Identificacao" method="post">
+    <button type="submit" class="btn btn-danger">Sim, Apagar Definitivamente</button>
+    <a href="/Despesas" class="btn btn-secondary">Cancelar</a>
+</form>

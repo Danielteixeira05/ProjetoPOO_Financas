@@ -22,6 +22,30 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 10.0
 build_property.EnableCodeStyleSeverity = 
 
+[C:/Users/admin/Documents/Works/Faculdade/2ºano/poo/DG/E1/ProjetoPOO/GestaoFinancas/GestaoFinancasWeb/Views/Conta/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFcTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/admin/Documents/Works/Faculdade/2ºano/poo/DG/E1/ProjetoPOO/GestaoFinancas/GestaoFinancasWeb/Views/Conta/Registar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFcUmVnaXN0YXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/admin/Documents/Works/Faculdade/2ºano/poo/DG/E1/ProjetoPOO/GestaoFinancas/GestaoFinancasWeb/Views/Despesas/Criar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVzcGVzYXNcQ3JpYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/admin/Documents/Works/Faculdade/2ºano/poo/DG/E1/ProjetoPOO/GestaoFinancas/GestaoFinancasWeb/Views/Despesas/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVzcGVzYXNcRWRpdGFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/admin/Documents/Works/Faculdade/2ºano/poo/DG/E1/ProjetoPOO/GestaoFinancas/GestaoFinancasWeb/Views/Despesas/Eliminar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVzcGVzYXNcRWxpbWluYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/admin/Documents/Works/Faculdade/2ºano/poo/DG/E1/ProjetoPOO/GestaoFinancas/GestaoFinancasWeb/Views/Despesas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVzcGVzYXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/admin/Documents/Works/Faculdade/2ºano/poo/DG/E1/ProjetoPOO/GestaoFinancas/GestaoFinancasWeb/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -32,6 +56,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/admin/Documents/Works/Faculdade/2ºano/poo/DG/E1/ProjetoPOO/GestaoFinancas/GestaoFinancasWeb/Views/Receitas/Criar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjZWl0YXNcQ3JpYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/admin/Documents/Works/Faculdade/2ºano/poo/DG/E1/ProjetoPOO/GestaoFinancas/GestaoFinancasWeb/Views/Receitas/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjZWl0YXNcRWRpdGFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/admin/Documents/Works/Faculdade/2ºano/poo/DG/E1/ProjetoPOO/GestaoFinancas/GestaoFinancasWeb/Views/Receitas/Eliminar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjZWl0YXNcRWxpbWluYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/admin/Documents/Works/Faculdade/2ºano/poo/DG/E1/ProjetoPOO/GestaoFinancas/GestaoFinancasWeb/Views/Receitas/Index.cshtml]
