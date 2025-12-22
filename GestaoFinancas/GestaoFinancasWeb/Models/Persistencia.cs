@@ -65,7 +65,7 @@ namespace GestaoFinancasWeb.Models
         {
             if (!File.Exists(CaminhoCategorias)) 
             {
-                // Se o ficheiro não existe, cria categorias padrão para não ficar vazio
+                // Se o ficheiro não existe, basicamente pode-se criar categorias padrão para não ficar vazio
                 var padrao = new List<Categoria> 
                 { 
                     new Categoria { Id = 1, Nome = "Alimentação" },

@@ -11,7 +11,7 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         // Se não tiver login, mostra zeros ou redireciona 
-        // Aqui deixamos mostrar, mas tudo a zero se não houver dados
+        // Aqui deixo mostrar, mas tudo a zero se não houver dados
         
         var receitas = Persistencia.CarregarReceitas();
         var despesas = Persistencia.CarregarDespesas();

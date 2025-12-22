@@ -27,7 +27,7 @@ namespace GestaoFinancasWeb.Controllers
         // CRIAR (Formulário)
         public IActionResult Criar()
         {
-            // --- MUDANÇA AQUI ---
+          
             // Envia a lista de categorias para o Dropdown funcionar
             ViewBag.ListaCategorias = Persistencia.CarregarCategorias(); 
             return View();
@@ -45,7 +45,7 @@ namespace GestaoFinancasWeb.Controllers
                 return RedirectToAction("Index");
             }
             
-            // --- MUDANÇA AQUI ---
+
             // Se der erro, recarrega a lista para o Dropdown não desaparecer
             ViewBag.ListaCategorias = Persistencia.CarregarCategorias();
             return View(novaReceita);
@@ -78,7 +78,7 @@ namespace GestaoFinancasWeb.Controllers
             var receita = listaReceitas.FirstOrDefault(r => r.Identificacao == id);
             if (receita == null) return NotFound();
 
-            // --- MUDANÇA AQUI ---
+
             // No editar também precisamos do Dropdown
             ViewBag.ListaCategorias = Persistencia.CarregarCategorias();
 
@@ -101,7 +101,7 @@ namespace GestaoFinancasWeb.Controllers
                 return RedirectToAction("Index");
             }
 
-            // Se der erro, recarrega a lista
+            // Se der erro, isto recarrega a lista com o resturn
             ViewBag.ListaCategorias = Persistencia.CarregarCategorias();
             return View(receitaAtualizada);
         }
